@@ -23,6 +23,7 @@ export const userSchema = [
         label: "Email Address",
         type: "email",
         required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
 
     // can add new fields later here if we wanted :

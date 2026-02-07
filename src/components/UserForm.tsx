@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Save, Heart } from 'lucide-react';
+import { Save, X } from 'lucide-react';
 import UserDataTable from '@/components/UserDataTable';
 import { toast } from "sonner";
 import { api } from "@/lib/api";
@@ -81,10 +81,15 @@ export default function UserForm() {
         }
     };
 
-    const onEdit = (user:User) =>{
+    const onEdit = (user: User) => {
         setEditUser(user);
         setForm(user);
         document.getElementById("firstName")?.focus();
+    }
+
+    const handleCancel = () => {
+        setEditUser({});
+        setForm({});
     }
 
     return (
@@ -129,7 +134,18 @@ export default function UserForm() {
 
                                 </div>
 
-                                <div className="pt-4">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <Button
+                                        onClick={handleCancel}
+                                        disabled={isSaving}
+                                        variant="outline"
+                                        className="w-full h-12 text-base font-medium border-muted-foreground/30 text-muted-foreground hover:bg-muted/50 hover:text-foreground transition-all duration-200 active:scale-[0.98]"
+                                        size="lg"
+                                    >
+                                        <X className="mr-2 h-5 w-5 opacity-80" />
+                                        Clear
+                                    </Button>
+
                                     <Button
                                         onClick={handleSubmit}
                                         disabled={isSaving}
@@ -152,7 +168,7 @@ export default function UserForm() {
                             </CardContent>
                         </Card>
                     </div>
-                    
+
                     {/* User Data Table Section */}
                     <Card className="bg-[var(--glass-bg)]
     backdrop-blur-xl
@@ -178,7 +194,7 @@ export default function UserForm() {
                         </CardContent>
                     </Card>
                 </div>
-            </div>           
+            </div>
         </div>
     );
 }

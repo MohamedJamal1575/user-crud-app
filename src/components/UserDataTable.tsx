@@ -199,15 +199,47 @@ export default function UserDataTable({ users, onEdit, onDelete }: UserDataTable
                   >
                     <Edit2 className="h-4 w-4" />
                   </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => onDelete(user.id)}
-                    aria-label={`Delete ${user.firstName} ${user.lastName}`}
-                    className="h-8 w-8 hover:bg-destructive/10 hover:text-destructive transition-colors"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label={`Delete ${user.firstName} ${user.lastName}`}
+                        className="h-8 w-8 hover:bg-destructive/10 hover:text-destructive transition-colors flex-shrink-0"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </AlertDialogTrigger>
+
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Delete user?
+                        </AlertDialogTitle>
+
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently delete{" "}
+                          <span className="font-semibold">
+                            {user.firstName} {user.lastName}
+                          </span>.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>
+                          Cancel
+                        </AlertDialogCancel>
+
+                        <AlertDialogAction
+                          onClick={() => onDelete(user.id)}
+                          variant={'destructive'}
+                          className="text-white hover:bg-red-700"
+                        >
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
               </div>
 
