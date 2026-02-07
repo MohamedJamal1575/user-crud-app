@@ -22,6 +22,7 @@ import {
   AlertDialogCancel,
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
+import EmptyState from './EmptyState';
 
 
 type UserDataTableProps = {
@@ -41,6 +42,15 @@ export default function UserDataTable({ users, onEdit, onDelete }: UserDataTable
     pagination.startIndex,
     pagination.endIndex
   );
+
+  if (!users || users.length === 0) {
+    return (
+      <EmptyState
+        title="No users available"
+        description="You haven’t added any users yet. Start by creating one."
+      />
+    );
+  }
 
   return (
     <div className="w-full max-w-full overflow-hidden">
