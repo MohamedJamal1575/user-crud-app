@@ -90,7 +90,7 @@ export default function UserForm() {
     return (
         <div className="min-h-screen flex flex-col">
             {/* Main Content */}
-            <main className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
+            <div className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
                 <div className="max-w-6xl mx-auto space-y-8">
                     {/* User Details Form */}
                     <div className="max-w-lg mx-auto space-y-8">
@@ -152,6 +152,7 @@ export default function UserForm() {
                             </CardContent>
                         </Card>
                     </div>
+                    
                     {/* User Data Table Section */}
                     <Card className="bg-[var(--glass-bg)]
     backdrop-blur-xl
@@ -177,23 +178,7 @@ export default function UserForm() {
                         </CardContent>
                     </Card>
                 </div>
-            </main>
-
-            {/* Footer */}
-            <footer className="py-6 px-4 text-center text-sm text-muted-foreground border-t border-border/40 bg-card/30 backdrop-blur-sm">
-                <p className="flex items-center justify-center gap-1.5 flex-wrap">
-                    © 2026.
-                    <Heart className="h-4 w-4 text-primary fill-primary inline-block" />
-                    <a
-                        href="https://mohamed-jamal.netlify.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold text-primary hover:underline transition-colors"
-                    >
-                        Mohamed Jamal M
-                    </a>
-                </p>
-            </footer>
+            </div>           
         </div>
     );
 }
